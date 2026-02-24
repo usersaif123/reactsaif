@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Festival international de Carthage",
+    "description": "Un festival annuel de musique, de danse et de théâtre dans la ville de Carthage.",
+    "img": "placeholder.jpg",
+    "price": 30,
+    "nbTickets": 10,
+    "nbParticipants": 10,
+    "like": false
+  },
+  {
+    "name": "Jazz à Carthage",
+    "description": "Un festival de jazz de renommée internationale.",
+    "img": "placeholder.jpg",
+    "price": 50,
+    "nbTickets": 20,
+    "nbParticipants": 5,
+    "like": true
+  }
+]
