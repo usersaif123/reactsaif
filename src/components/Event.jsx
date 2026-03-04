@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import { deleteEvent } from '../service/api';
 
 const Event = ({ event }) => {
     const [nbTickets, setNbTickets] = useState(event.nbTickets);
@@ -53,7 +55,11 @@ const Event = ({ event }) => {
                 </div>
             )}
             <Card.Body>
-                <Card.Title>{event.name}</Card.Title>
+                <Card.Title>
+                    <Link to={`/event/${event.id}`} style={{ textDecoration: 'none' }}>
+                        {event.name}
+                    </Link>
+                </Card.Title>
                 <Card.Text>
                     Price: {event.price}<br />
                     Number of tickets: {nbTickets}<br />
@@ -73,6 +79,23 @@ const Event = ({ event }) => {
                         disabled={nbTickets === 0}
                     >
                         Book an event
+                    </Button>
+                </div>
+                <div className="d-flex gap-2 mt-2">
+                    <Button
+                        variant="warning"
+                        onClick={() => window.location.href = `/update-event/${event.id}`}
+                    >
+                        Update
+                    </Button>
+                    <Button
+                        variant="danger"
+                        onClick={async () => {
+                            await deleteEvent(event.id);
+                            window.location.reload();
+                        }}
+                    >
+                        Delete
                     </Button>
                 </div>
                 {showMessage && (
